@@ -1,5 +1,5 @@
-# Raspberry Pi (and Linux) Wifi Repair Automation
-> This bash script checks for wireless internet connection and, if it is failing, tries to fix it.   
+# Raspberry Pi (and Linux) Network Repair Automation
+> This bash script checks for ethernet/wireless internet connection and, if it is failing, tries to fix it.   
 
 ## Prerequisites
 
@@ -9,11 +9,12 @@
 ## How to use
 
 - Clone (or download) this repo locally:  
-`git clone https://github.com/ltpitt/bash-network-repair-automation.git`
+`git clone https://github.com/chrisleekr/bash-network-repair-automation.git`
 - Edit your root user's crontab:  
 `sudo crontab -e` 
 - This line will execute the check every minute. Please customize the script path according to the folder where you cloned the repo:  
 `* * * * * /yourpath/network_check.sh`
+`*/5 * * * * /yourpath/network_check.sh >> /var/log/network_check.log 2>&1`
 - If you also want to reboot in case wifi is not working after the fix uncomment the required lines in the code (you'll find a detailed explanation in the script comments):  
 `nano network_check.sh`  
 - If you want to perform automatic repair fsck in case of reboot (this is the last possible recovery action) remember to uncomment *fsck autorepair* editing rcS with the following command:  
@@ -24,7 +25,8 @@
 If you want to add push or email notifications when your network is restored please check my other repo, [Simple Notifications](https://github.com/ltpitt/python-simple-notifications)
 
 ## Release History
-
+* 0.0.3
+    * Updated to support different interface
 * 0.0.2
     * Refactored in order to remove tmp files and preserve Raspberry's SD card
 * 0.0.1
@@ -32,7 +34,7 @@ If you want to add push or email notifications when your network is restored ple
 
 ## Meta
 
-Davide Nastri – [@pitto](https://twitter.com/pitto) – d.nastri@gmail.com
+Original Author: Davide Nastri – [@pitto](https://twitter.com/pitto) – d.nastri@gmail.com
 
 Distributed under the GPL license. See ``LICENSE`` for more information.
 
