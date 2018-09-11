@@ -9,16 +9,21 @@
 ## How to use
 
 - Clone (or download) this repo locally:  
-`git clone https://github.com/chrisleekr/bash-network-repair-automation.git`
+    `git clone https://github.com/chrisleekr/bash-network-repair-automation.git`
+
 - Edit your root user's crontab:  
-`sudo crontab -e` 
+    `sudo crontab -e` 
+
 - This line will execute the check every minute. Please customize the script path according to the folder where you cloned the repo:  
-`* * * * * /yourpath/network_check.sh`
-`*/5 * * * * /yourpath/network_check.sh >> /var/log/network_check.log 2>&1`
+    `* * * * * /yourpath/network_check.sh`
+
+    `*/5 * * * * /yourpath/network_check.sh >> /var/log/network_check.log 2>&1`
+
 - If you also want to reboot in case wifi is not working after the fix uncomment the required lines in the code (you'll find a detailed explanation in the script comments):  
-`nano network_check.sh`  
+    `nano network_check.sh`  
+
 - If you want to perform automatic repair fsck in case of reboot (this is the last possible recovery action) remember to uncomment *fsck autorepair* editing rcS with the following command:  
-`sudo nano /etc/default/rcS`
+    `sudo nano /etc/default/rcS`
 
 ## Bonus - Push notifications / Email
 
